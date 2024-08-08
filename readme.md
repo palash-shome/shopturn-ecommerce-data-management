@@ -104,3 +104,33 @@ Follow these steps to set up and run the Flask application locally:
 ```bash
 git clone https://github.com/palas-shome/shopturn-ecommerce-data-management.git
 cd shopturn-ecommerce-data-management
+```
+
+### 2. Set Up a Virtual Environment
+Create a virtual environment to isolate your project’s dependencies:
+```bash 
+python -m venv .venv
+```
+
+### 3. Activate the Virtual Environment
+Activate the virtual environment:
+
+## On Windows:
+```bash 
+.\.venv\Scripts\activate
+```
+## On macOS and Linux:
+```bash 
+source .venv/bin/activate
+```
+
+### 4. Install Dependencies
+Install the required Python packages listed in requirements.txt:
+```bash 
+pip install -r requirements.txt
+```
+
+### Run the Flask Application:
+```bash 
+python app.py
+```
