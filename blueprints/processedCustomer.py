@@ -1,5 +1,7 @@
 from flask import Blueprint, jsonify
-from intermittentStorage.processCustomer import Processed_Customers
+from startPreprocessing import process_customers
+
+data = []
 
 processed_customer_bp = Blueprint('processed_customer', __name__)
 
@@ -36,6 +38,8 @@ def process_customer():
       404:
         description: No processed customer data available
     """
-    if Processed_Customers:
-        return jsonify(Processed_Customers), 200
+
+    data = process_customers()
+    if data:
+        return jsonify(data), 200
     return jsonify({'Error': 'No Customers Listed'}), 404

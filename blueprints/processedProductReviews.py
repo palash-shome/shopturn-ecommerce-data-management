@@ -1,5 +1,7 @@
 from flask import Blueprint, jsonify
-from intermittentStorage.processProductsData import Processed_Product
+from startPreprocessing import averageReviews
+
+process_data=[]
 
 processProductReviews_bp = Blueprint('processProductReviews', __name__)
 
@@ -40,6 +42,8 @@ def getProcessedReviews():
       404:
         description: No processed reviews available
     """
-    if Processed_Product:
-        return jsonify(Processed_Product), 200
+    process_data = averageReviews()
+    if process_data:
+        
+        return jsonify(process_data), 200
     return jsonify({'Error': 'No Products Listed'}), 404

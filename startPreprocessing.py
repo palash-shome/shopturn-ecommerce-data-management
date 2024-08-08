@@ -3,6 +3,7 @@ import requests
 import pandas as pd
 from utility.preprocessing import standardize_date_format, process_data, to_uppercase, average_rating
 
+
 def process_customers():
 
     #api endpoint for fetch customer data 
@@ -31,16 +32,11 @@ def process_customers():
 
     #additional converting the names to uppercase
     df['name'] = process_data(df['name'],to_uppercase)
-
+    
     #convert dataframe to list
-    processed_data = df.values.tolist()
+    processed_data = df.to_dict(orient='records')
 
-    #storing the list to an in memory storage
-    with open ('./intermittentStorage/processCustomer.py','w') as f:
-        f.write("Processed_Customers = [\n")
-        for item in processed_data:
-            f.write("    " + str(item).replace("'", '"') + ",\n")
-        f.write("]\n")
+    return processed_data
 
 def averageReviews():
 
@@ -72,17 +68,11 @@ def averageReviews():
     merged_df = pd.merge(df2, average_ratings_df, on='product_id', how='outer')
 
     
-   
+    
+     # Convert the DataFrame to a list of dictionaries
+    return( merged_df.to_dict(orient='records'))
 
-    #convert dataframe to list
-    processed_data = merged_df.values.tolist()
-
-    #storing the list to an in memory storage
-    with open ('./intermittentStorage/processProductsData.py','w') as f:
-        f.write("from math import nan \nProcessed_Product = [\n")
-        for item in processed_data:
-            f.write("    " + str(item).replace("'", '"') + ",\n")
-        f.write("]\n")
+    
 
 
 
@@ -90,6 +80,4 @@ def averageReviews():
 
 
 
-if __name__ == "__main__":
-    #process_customers()
-    averageReviews()
+
