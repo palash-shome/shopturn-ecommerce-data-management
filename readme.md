@@ -86,10 +86,6 @@ Shopturn E-Commerce Data Management/
 │   ├── Products.py
 │   └── Reviews.py
 │
-├── intermittentStorage/
-│   ├── processCustomer.py
-│   └── processProductsData.py
-│
 └── utility/
     ├── helper.py
     └── preprocessing.py
