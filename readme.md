@@ -130,7 +130,12 @@ Install the required Python packages listed in requirements.txt:
 pip install -r requirements.txt
 ```
 
-### Run the Flask Application:
+### 5. Run the Flask Application:
 ```bash 
 python app.py
+```
+
+### 6. API Documentation available at 
+```bash 
+http://127.1.1.1:5000/apidocs/
 ```
