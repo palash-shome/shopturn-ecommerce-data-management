@@ -33,7 +33,7 @@ def process_customers():
     #additional converting the names to uppercase
     df['name'] = process_data(df['name'],to_uppercase)
     
-    #convert dataframe to list
+    #convert dataframe to list of dictionaries
     processed_data = df.to_dict(orient='records')
 
     return processed_data
@@ -43,11 +43,16 @@ def averageReviews():
     review_url = "http://127.1.1.1:5000/reviews/all"
     product_url= "http://127.1.1.1:5000/products/all"
 
+    #get reviews data from review url
     reviews_data = requests.get(review_url)
 
+    #extract data
     reviews_response = json.loads(reviews_data.text)
+
     #restructuring the date format
     reviews_response = standardize_date_format(reviews_response, 'created_at')
+
+    #load into dataframe
     df1 = pd.DataFrame(reviews_response)
 
     
@@ -60,11 +65,16 @@ def averageReviews():
     # fetch product data
     product_data = requests.get(product_url)
 
+    #extract data
     product_response = json.loads(product_data.text)
+
     #restructuring the date format
     product_response = standardize_date_format(product_response, 'created_at')
+
+    #load into dataframe
     df2 = pd.DataFrame(product_response)
 
+    #join reviews and product to get average reviews
     merged_df = pd.merge(df2, average_ratings_df, on='product_id', how='outer')
 
     

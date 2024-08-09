@@ -34,7 +34,7 @@ def process_customer():
                 type: string
                 format: date-time
                 description: The date and time when the customer was created
-                example: "2023-08-08T12:34:56Z"
+                example: "03-01-2023 12:00:00"
       404:
         description: No processed customer data available
     """

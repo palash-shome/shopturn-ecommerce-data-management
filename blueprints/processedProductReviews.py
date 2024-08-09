@@ -22,23 +22,27 @@ def getProcessedReviews():
                 type: integer
                 description: The unique identifier for the product
                 example: 101
-              review_id:
-                type: integer
-                description: The unique identifier for the review
-                example: 1001
-              review_text:
-                type: string
-                description: The text content of the review
-                example: "Great product, very satisfied!"
-              rating:
+              average_rating:
                 type: integer
                 description: The rating given by the reviewer
                 example: 5
+              price:
+                type: number
+                description: The price of the product
+                example: 55.09
+              name:
+                type: string
+                description: The name of the product
+                example: "Widget"
+              description:
+                type: string
+                description: The description of the product
+                example: "A handy gadget"
               created_at:
                 type: string
                 format: date-time
                 description: The date and time when the review was created
-                example: "2023-08-08T12:34:56Z"
+                example: "30-01-2023 12:00:00"
       404:
         description: No processed reviews available
     """

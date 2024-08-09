@@ -14,14 +14,16 @@ from blueprints.processedProductReviews import processProductReviews_bp
 
 
 app = Flask(__name__) 
+
+#for api documentation
 swagger=Swagger(app, config={
     'headers': [],
     'specs': [
         {
             'endpoint': 'apispec_1',
             'route': '/apispec_1.json',
-            'rule_filter': lambda rule: True,  # all in
-            'model_filter': lambda tag: True,  # all in
+            'rule_filter': lambda rule: True,  
+            'model_filter': lambda tag: True,  
         }
     ],
     'static_url_path': '/flasgger_static',
@@ -30,7 +32,7 @@ swagger=Swagger(app, config={
 })
 
 
-
+#routes
 app.register_blueprint(home_bp)
 app.register_blueprint(customer_bp, url_prefix='/customers')
 app.register_blueprint(address_bp, url_prefix='/address')
