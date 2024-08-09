@@ -55,7 +55,6 @@ The folder structure is as follows :
 Shopturn E-Commerce Data Management/
 │
 ├── app.py
-├── folder_structure.txt
 ├── startPreprocessing.py
 ├── requirements.txt
 │
